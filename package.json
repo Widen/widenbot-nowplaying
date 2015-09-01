@@ -1,0 +1,38 @@
+{
+  "name": "widenbot-nowplaying",
+  "version": "0.0.0",
+  "description": "nowplaying plugin for widenbot",
+  "main": "index.js",
+  "scripts": {
+    "lint": "jshint index.js",
+    "unit-test": "tape ./test/*-test.js",
+    "coverage": "covert ./test/*-test.js",
+    "test": "npm run lint && npm run unit-test"
+  },
+  "keywords": [
+    "widenbot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Widen/widenbot-nowplaying.git"
+  },
+  "author": "Mark Feltner <mfeltner@widen.com> (http://widen.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "covert": "^1.1.0",
+    "jshint": "^2.8.0",
+    "tape": "^4.2.0"
+  },
+  "dependencies": {
+    "lastfm": "^0.9.2",
+    "lodash": "^3.10.1",
+    "promise": "^7.0.4"
+  },
+  "bugs": {
+    "url": "https://github.com/Widen/widenbot-nowplaying/issues"
+  },
+  "homepage": "https://github.com/Widen/widenbot-nowplaying#readme",
+  "directories": {
+    "test": "test"
+  }
+}
