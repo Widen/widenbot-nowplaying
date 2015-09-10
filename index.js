@@ -227,9 +227,11 @@ var LastFm = module.exports = {
 
     "pattern": /^(lastfm|np|nowplaying)$/,
     "respond": function(ctx) {
-        var argv = ctx.args.split(' ');
+        var log = ctx.log,
+            argv = ctx.args.split(' ');
 
         var
+            command = ctx.command,
             subCommand = argv[0],
             subArgs = argv.slice(1)
             ;
@@ -244,10 +246,16 @@ var LastFm = module.exports = {
             lastfm_username
             ;
 
+        if (command && 'np|nowplaying'.indexOf(command) !== -1) {
+            log.info('Getting nowplaying for ' + slack_username + ' / ' + lastfm_username);
+            return now_playing(ctx.brain, lastFm, slack_username, lastfm_username);
+        }
+
         if (subCommand)
         {
             if (subCommand === 'register' && subArgs && subArgs[0])
             {
+                log.info('Registering user ' + slack_username + ' / ' + lastfm_username);
                 lastfm_username = subArgs[0];
 
                 return register(ctx.brain, slack_username, lastfm_username);
@@ -257,9 +265,11 @@ var LastFm = module.exports = {
 
                 if (subArgs && subArgs[0]){
                     lastfm_username = subArgs[0];
+                    log.info('Getting nowplaying for ' + slack_username + ' / ' + lastfm_username);
                     return now_playing(ctx.brain, lastFm, slack_username, lastfm_username);
                 }
 
+                log.info('Getting nowplaying for ' + slack_username + ' / ' + lastfm_username);
                 return now_playing(ctx.brain, lastFm, slack_username);
             }
         }
