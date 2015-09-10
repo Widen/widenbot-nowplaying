@@ -225,7 +225,7 @@ var LastFm = module.exports = {
             "register <lastFmUsername>\t Register your slack username to your lastfm username.\n" +
             "nowplaying|np \t Post your now playing.\n",
 
-    "pattern": /^lastfm$/,
+    "pattern": /^(lastfm|np|nowplaying)$/,
     "respond": function(ctx) {
         var argv = ctx.args.split(' ');
 
