@@ -175,9 +175,9 @@ function format_post(track)
 
     var
         postTemplate = '[ *<%= name.name %>* ] _by_ [ *<%= artist.name %>* ] _on_ [ *<%= album.name %>* ] [ _<%= tags.map(function(t){return t.name;}).join(", ") %>_ ]- <%= imgUrl %>',
-        post = _.template(postTemplate, track);
+        post = _.template(postTemplate);
 
-    return post;
+    return post(track);
 }
 
 
